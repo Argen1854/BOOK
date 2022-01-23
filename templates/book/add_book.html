@@ -1,0 +1,16 @@
+{% extends 'book/main.html' %}
+
+{% block title %}
+Add Book
+{% endblock %}
+
+{% block content %}
+    <div class="feature">
+        <button class="btn" type="submit">Добавить</button> -->
+        <form action="{% url 'create_book' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
+{% endblock %}
