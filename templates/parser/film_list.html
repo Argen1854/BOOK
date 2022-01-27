@@ -1,0 +1,130 @@
+{% extends 'parser/main.html' %}
+
+{% block title %}
+Parser List
+{% endblock %}
+
+{% block content %}
+    
+
+    <div class="card_cover">
+        {% for i in object_list %}    
+        
+        <div class="card mb-6">
+            <img src="{{ i.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <div class="card_1">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.date }}</p>
+            </div>
+            <a href="{{ i.id }}" class="card-btn">
+                <span class="card-btn_text">
+                   <span>more</span> 
+                </span>
+            </a>
+            </div>
+        </div>
+    
+        {% endfor %}
+        <style>
+            .card-body{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .card_cover{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .card{
+                border: 1px solid orange;
+                width: 48%;
+                margin-bottom: 20px;
+            }
+            .card-btn{
+                text-decoration: none;
+                position: relative;
+                display: inline-block;
+                transition: all 0.8s ease 0s;
+            }
+            .card-btn:before,
+            .card-btn:after{
+                content: '';
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                left: 0%;
+                top: -10px;
+                z-index: 1;
+                transition: all 0.8s ease 0s;
+                margin: 0px 0px 0px 40px;
+            }
+            .card-btn:before{
+                border: 1px solid #E1B572;
+                animation: ara 20s infinite linear;
+            }
+            .card-btn:after{
+                border: 1px solid red;
+                animation: ara 40s infinite linear;
+            }
+            .card-btn:hover:before,
+            .card-btn:hover:after{
+                transition: all 0.8s ease 0s;
+                left: 70%;
+                opacity: 0;
+            }
+            .card-btn_text{
+                position: relative;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 35px;
+                border-radius: 50px;
+                font-size: 18px;
+                text-transform: uppercase;
+                color: #fff;
+                letter-spacing: 5px;
+                transition: all 1s;
+                top: 0;
+                overflow: hidden;
+            }
+            .card-btn_text:before,
+            .card-btn_text:after{
+                content: '';
+                position: absolute;
+                width: 51%;
+                height: 100%;
+                background-color: orange;
+                transition: all 0.8s;
+            }
+            .card-btn_text:before{
+                left: 0;
+                z-index: 2;
+            }
+            .card-btn_text:after{
+                right: 0;
+            }
+            .card-btn_text span{
+                position: relative;
+                z-index: 2;
+            }
+            .card-btn:hover .card-btn_text:before,
+            .card-btn:hover .card-btn_text:after{
+                background-color: red;
+            }
+            .card-btn:hover .card-btn_text:before{
+                width: 100%;
+            }
+            @keyframes ara{
+                0%{
+                    transform: rotate(0deg);
+                }
+                100%{
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </div>    
+{% endblock %}
