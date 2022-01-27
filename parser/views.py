@@ -1,8 +1,8 @@
 from re import template
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, FormView
+from django.views.generic import ListView, FormView, DetailView
 from . import parser, models, forms
 
 
@@ -35,6 +35,12 @@ class ParserListManga(ListView):
     def get_queryset(self):
         return super().get_queryset()
 
+class MangaDetailView(DetailView):
+    template_name = 'parser/manga_d.html'
+    
+    def get_object(self, *kwargs):
+        id = self.kwargs.get('id')
+        return get_object_or_404(models.Manga, id=id)
 
 
 
