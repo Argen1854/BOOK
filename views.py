@@ -9,6 +9,7 @@ class ParserFormView(FormView):
     template_name = "parser.html"
     form_class = forms.ParserForm
 
+
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
